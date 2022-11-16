@@ -1,1 +1,225 @@
-# sochun.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* <span> */
+
+        .with-span button {
+            position: relative;
+            padding: 10px 25px;
+            margin: 50px;
+            margin-bottom: 100px;
+            font-size: 40px;
+            border-style: none;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+
+        .with-span  button:hover span {
+            left: 10%;
+        }
+
+        .with-span span {
+            position: absolute;
+            width: 80%;
+            height: 3px;
+            background-color: black;
+            bottom: 0;
+            left: -100%;
+            transition: .4s;
+        }
+
+        /* ::before, ::after */
+
+        .before-after button {
+            position: relative;
+            padding: 10px 25px;
+            margin: 50px;
+            margin-bottom: 100px;
+            font-size: 40px;
+            border-style: none;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+
+        .before-after button::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: -100%;
+            width: 100%;
+            height: 6px;
+            background-color: black;
+            transition: .5s cubic-bezier(0.24, 1.27, 0.51,-0.26);
+        }
+
+        .before-after button:hover::before {
+            right: 0;
+        }
+
+        /* Zmiana koloru wypełnienia i tekstu po najechaniu */
+
+        .bgcolor-change button {
+            position: relative;
+            padding: 10px 25px;
+            margin: 50px;
+            margin-bottom: 100px;
+            font-size: 40px;
+            border: 2px solid black;
+            background-color: transparent;
+            border-radius: 20px;
+            box-shadow: 0 0 0 2px white, 0 0 0 4px black;
+            overflow: hidden;
+            transition: .25s .05s;
+        }
+
+        .bgcolor-change button::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 0px;
+            bottom: 0;
+            left: 0;
+            background-color: black;
+            transition: .3s;
+            z-index: -1;
+        }
+
+        .bgcolor-change button:hover::before {
+            height: 100%;
+        }
+
+        .bgcolor-change button:hover {
+            color: white;
+        }
+
+        /* Przycisk z animacją dwuetapową */
+
+        .two-levels button {
+            position: relative;
+            padding: 10px 25px;
+            margin: 50px;
+            margin-bottom: 100px;
+            font-size: 40px;
+            border: 2px solid black;
+            background-color: transparent;
+            overflow: hidden;
+            transition: 0.2s 0.25s;
+        }
+
+        .two-levels button::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 16px;
+            background-color: brown;
+            transform: translateY(-50%);
+            z-index: -1;
+            top: 50%;
+            left: 100%;
+            transition: left 0.2s, height 0.1s 0.2s;
+        }
+
+        .two-levels button:hover::before {
+            left: 0;
+            height: 100%;
+        }
+
+        .two-levels button:hover {
+            color: white;
+        }
+
+        /* Przycisk z trójątem */
+
+        .triangle button {
+            display: block;
+            position: relative;
+            margin: 50px auto;
+            font-size: 40px;
+            line-height: 70px;
+            padding: 0 40px;
+            background-color: white;
+            border: 3px solid black;
+            overflow: hidden;
+            transition: 0.3s 0.3s;
+        }
+
+        .triangle button:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .triangle button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -30px;
+            border-left: 30px solid black;
+            border-top: 35px solid transparent;
+            border-bottom: 35px solid transparent;
+            transition: left .2s, border-left .3s .1s;
+        }
+
+        .triangle button:hover::before {
+            left: 0;
+            border-left: 30px solid white;
+        }
+
+        .triangle button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -30px;
+            border-right: 30px solid black;
+            border-top: 35px solid transparent;
+            border-bottom: 35px solid transparent;
+            transition: right .2s, border-right .3s .1s;
+        }
+
+        .triangle button:hover::after {
+            right: 0;
+            border-right: 30px solid white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="with-span">
+        <h2>Przy użyciu span</h2>
+        <button>Przycisk<span></span></button>
+    </div>
+
+    <div class="before-after">
+        <h2>Przy użyciu ::before i ::after</h2>
+        <button>Przycisk</button>
+    </div>
+
+    <div class="bgcolor-change">
+        <h2>Zmiana koloru wypełnienia tekstu</h2>
+        <button>Przycisk</button>
+    </div>
+
+    <div class="two-levels">
+        <h2>Przycisk z animacją dwuetapową</h2>
+        <button>Przycisk</button>
+    </div>
+
+    <div class="triangle">
+        <h2>Przycisk z pojawiającym się trójkątem</h2>
+        <button>Przycisk</button>
+    </div>
+</body>
+</html>
